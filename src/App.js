@@ -3,9 +3,10 @@ import React, { useEffect, useState } from "react";
 import "./App.css";
 import SearchIcon from "./search.svg";
 import MovieCard from "./MovieCard";
-// 45d11eb
 
-const API_URL = " http://www.omdbapi.com?apikey=45d11eb";
+const API_URL = `http://www.omdbapi.com?apikey=${process.env.REACT_APP_API_KEY}`;
+console.log(API_URL);
+
 const App = () => {
   const [movies, setMovies] = useState([]);
   const [searchTerm, setSearchTerm] = useState();
@@ -14,6 +15,7 @@ const App = () => {
     const response = await fetch(`${API_URL}&s=${title}`);
     const data = await response.json();
 
+    console.log(data);
     setMovies(data.Search);
   };
   useEffect(() => {
@@ -22,7 +24,7 @@ const App = () => {
   return (
     <>
       <div className="app">
-        <h1> MovieLand </h1>
+        <h1> Kuki Wood </h1>
         <div className="search">
           <input
             placeholder="Enter movie name"
